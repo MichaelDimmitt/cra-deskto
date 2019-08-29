@@ -122,11 +122,11 @@ const Resolve = () =>
       <iframe src={youtubeList[randomArrayLength-accum3]} width="100%" height="100%" frameBorder="0"/>
   }
   </Fragment>
-  
+
 function App() {
   return (
     <Fragment>
-      <button onClick={() => window.location.reload()}style={{position: 'absolute', left:'50%', top: '30px', zIndex: '1000'}}>Refresh?</button>
+      <button onClick={() => window.location.reload()}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '1000'}}>Refresh? Click Here to change TV Channel</button>
       <Resolve/>
     </Fragment>
   );
