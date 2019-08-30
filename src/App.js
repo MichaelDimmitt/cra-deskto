@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import YouTube from 'react-youtube';
+
 
 
 const helpers = {
@@ -13,18 +15,20 @@ const helpers = {
 const { randomArrValue, randomArrNumber, buildUrlPlaylist, buildLiveChannelsUrl, buildLiveVideo } = helpers
 const video_experiences = {
   live_news_if_online : {
-    spacexLiveChecker: buildLiveChannelsUrl('UCtI0Hodo5o5dUb67FeUjDeA'),
-    podcastLiveChecker: buildLiveChannelsUrl('UCzQUP1qoWDoEbmsQxvdjxgQ'),
-    youtubeLiveNowTechnology: buildUrlPlaylist('PL57quI9usf_th5iJjjhXcRzlzibHUgYMA'),
-    youtubeLiveNowAnimals: buildUrlPlaylist('PLIFqWCuxNyoj8HAwNYOlqdDL52pNsbvKV')
+    spacexLiveChecker: ('UCtI0Hodo5o5dUb67FeUjDeA'),
+    podcastLiveChecker: ('UCzQUP1qoWDoEbmsQxvdjxgQ'),
+  },
+  live_news_playlists: {
+    youtubeLiveNowTechnology: ('PL57quI9usf_th5iJjjhXcRzlzibHUgYMA'),
+    youtubeLiveNowAnimals: ('PLIFqWCuxNyoj8HAwNYOlqdDL52pNsbvKV')
   },
   static_news: {   /* static news updated daily */
-    bbcTopStories: buildUrlPlaylist('PLS3XGZxi7cBVNadbxDqZCUgISvabEpu-g'),
-    espnMustSee: buildUrlPlaylist('PLn3nHXu50t5xa7-HYnJpzN5cxkLYgFP_V')
+    bbcTopStories: ('PLS3XGZxi7cBVNadbxDqZCUgISvabEpu-g'),
+    espnMustSee: ('PLn3nHXu50t5xa7-HYnJpzN5cxkLYgFP_V')
   },
   live_music: {
-    youtubeChilledCowByVideo: buildLiveVideo('hHW1oY26kxQ'),
-    youtubeChilledCowByChannelId: buildLiveChannelsUrl('UCSJ4gkVC6NrvII8umztf0Ow')
+    youtubeChilledCowByVideo: ('hHW1oY26kxQ'),
+    youtubeChilledCowByChannelId: ('UCSJ4gkVC6NrvII8umztf0Ow')
   },
   code_pen: {
     hyperSpace: 'https://codepen.io/yuanchuan/full/dqrdow',
@@ -41,8 +45,9 @@ const video_experiences = {
     birds:'PLOh2AUhKQzaNeE-vXiH1SMeJyTdRT84dr'
   }
 }
-const { live_news_if_online, static_news, live_music, code_pen, entertainment_and_visuals } = video_experiences
-const { spacexLiveChecker, podcastLiveChecker, youtubeLiveNowTechnology, youtubeLiveNowAnimals } = live_news_if_online
+const { live_news_if_online, live_news_playlists, static_news, live_music, code_pen, entertainment_and_visuals } = video_experiences
+const { spacexLiveChecker, podcastLiveChecker } = live_news_if_online
+const { youtubeLiveNowTechnology, youtubeLiveNowAnimals } = live_news_playlists
 const { bbcTopStories, espnMustSee } = static_news
 const { youtubeChilledCowByVideo, youtubeChilledCowByChannelId } = live_music
 const { hyperSpace, enterTheMatrix, dnaSequence, trippy, pitfall } = code_pen
@@ -83,27 +88,33 @@ const bestThreadMaps = [ // 5,6,7 - 5
   'https://threatbutt.com/map'
 ]
 
-const videoExperienceList = [ // 8,9,10,11,12,13,14,15,16 - 8
+const liveChannels = [
   spacexLiveChecker,
   podcastLiveChecker,
-  youtubeLiveNowTechnology,
-  bbcTopStories,
-  espnMustSee,
-  randomArrValue(bestThreadMaps),
-  youtubeChilledCowByVideo,
   youtubeChilledCowByChannelId
+]
+
+const liveVideos = [
+  youtubeChilledCowByVideo
+]
+const videoExperienceVideo = [ // 8,9,10,11,12,13,14,15,16 - 8
+  youtubeChilledCowByVideo,
 ];
 
+const videoExperienceList = [
+  bbcTopStories,
+  espnMustSee,
+]
 const youtubeList = [ // 17,18,19,20,21 - 17
-  buildUrlPlaylist(creedLoadscreens),
-  buildUrlPlaylist(assassinsCreedTrailers),
-  buildUrlPlaylist(lofiAnimes),
-  buildUrlPlaylist(historyOfArchitectureTestWillFailLaterOn),
+  creedLoadscreens,
+  assassinsCreedTrailers,
+  lofiAnimes,
+  historyOfArchitectureTestWillFailLaterOn,
 ]
 
 const accum1 = codePenArray.length
 const accum2 = accum1 + bestThreadMaps.length
-const accum3 = accum2 + videoExperienceList.length
+const accum3 = accum2 + videoExperienceVideo.length
 const accum4 = accum3 + youtubeList.length
 
 const fullArrayLength = accum4
@@ -117,17 +128,36 @@ const Resolve = () =>
     : randomArrayLength < accum2 ?
       <iframe src={bestThreadMaps[randomArrayLength-accum1]} width="100%" height="100%" frameBorder="0"/>
     : randomArrayLength < accum3 ?
-      <iframe src={videoExperienceList[randomArrayLength-accum2]} width="100%" height="100%" frameBorder="0"/>
+      <YouTube videoId={videoExperienceVideo[randomArrayLength-accum2]} opts={{width: '100%',playerVars: {autoplay: 1, list:youtubeList[randomArrayLength-accum3]}} } />
     :
-      <iframe src={youtubeList[randomArrayLength-accum3]} width="100%" height="100%" frameBorder="0"/>
+      <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (youtubeList[randomArrayLength-accum3]) }} } />
   }
   </Fragment>
 
 function App() {
+  const _onReady = (event) => {
+    // access to player in all event handlers via event.target
+    // event.target.playVideo();
+    
+  }
+
+  const _makeFullscreen = () => {
+    
+      const playerElement = document.getElementById('widget2')
+      const requestFullScreen =
+        playerElement.requestFullScreen ||
+        playerElement.mozRequestFullScreen ||
+        playerElement.webkitRequestFullScreen
+      console.log({requestFullScreen})
+      if (requestFullScreen) {
+        requestFullScreen.bind(playerElement)()
+      }
+  }
   return (
     <Fragment>
       <button onClick={() => window.location.reload()}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '1000'}}>Refresh? Click Here to change TV Channel</button>
       <Resolve/>
+      
     </Fragment>
   );
 }
