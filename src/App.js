@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import YouTube from 'react-youtube';
 
@@ -12,7 +12,7 @@ const helpers = {
   buildLiveChannelsUrl: (channel) => 'https://www.youtube.com/embed/live_stream?channel=' + channel + '&autoplay=1',
   buildLiveVideo: (plist) => 'https://www.youtube.com/embed/' + plist + '?index=1&rel=0&autoplay=1'
 }
-const { /*randomArrValue, randomArrNumber, buildUrlPlaylist,*/ buildLiveChannelsUrl, buildLiveVideo } = helpers
+const { /*randomArrValue, randomArrNumber, buildUrlPlaylist, buildLiveVideo*/ buildLiveChannelsUrl } = helpers
 
 const video_experiences = {
   live: {
@@ -72,27 +72,27 @@ const video_experiences = {
 // const { youtubeChilledCowByVideo, youtubeChilledCowByChannelId } = live_music
 // const { hyperSpace, enterTheMatrix, dnaSequence, trippy, pitfall } = code_pen
 // const { creedLoadscreens, assassinsCreedTrailers, lofiAnimes, historyOfArchitectureTestWillFailLaterOn, birds } = entertainment_and_visuals
-const threatMaps = [
-  'https://threatmap.fortiguard.com',
-  'https://threatmap.bitdefender.com',
-  'https://cybermap.kaspersky.com/widget',
-  'https://www.deteque.com/live-threat-map',
-  'https://www.fireeye.com/cyber-map/threat-map.html',
-  'https://threatbutt.com/map'
-]
+// const threatMaps = [
+//   'https://threatmap.fortiguard.com',
+//   'https://threatmap.bitdefender.com',
+//   'https://cybermap.kaspersky.com/widget',
+//   'https://www.deteque.com/live-threat-map',
+//   'https://www.fireeye.com/cyber-map/threat-map.html',
+//   'https://threatbutt.com/map'
+// ]
 
 const CodePen = ({url}) => {
-  return <iframe style={{position:'absolute', top:'-62px', width:"100%", height:"120%"}} src={url} width="100%" height="120%" frameBorder="0"/>
+  return <iframe title="1" style={{position:'absolute', top:'-62px', width:"100%", height:"120%"}} src={url} width="100%" height="120%" frameBorder="0"/>
 }
 
-const GifExperience = () => (
-  <div>
-    <iframe src="https://giphy.com/embed/3jvujBL5wCSYM" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen />
-    <iframe src="https://giphy.com/embed/Yohz12bnBkqVW" width="480" height="255" frameBorder="0" class="giphy-embed" allowFullScreen />
-    <iframe src="https://giphy.com/embed/3jvujBL5wCSYM" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen />
-    <iframe src="https://giphy.com/embed/Yohz12bnBkqVW" width="480" height="255" frameBorder="0" class="giphy-embed" allowFullScreen />
-  </div>
-);
+// const GifExperience = () => (
+//   <div>
+//     <iframe title="1" src="https://giphy.com/embed/3jvujBL5wCSYM" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen />
+//     <iframe title="2" src="https://giphy.com/embed/Yohz12bnBkqVW" width="480" height="255" frameBorder="0" class="giphy-embed" allowFullScreen />
+//     <iframe title="3" src="https://giphy.com/embed/3jvujBL5wCSYM" width="480" height="358" frameBorder="0" class="giphy-embed" allowFullScreen />
+//     <iframe title="4" src="https://giphy.com/embed/Yohz12bnBkqVW" width="480" height="255" frameBorder="0" class="giphy-embed" allowFullScreen />
+//   </div>
+// );
 
 // const codePenArray = [ // 0,1,2,3,4 - 0
 //   hyperSpace,
@@ -154,7 +154,7 @@ const bestThreadMaps = [ // 5,6,7 - 5
   'https://cybermap.kaspersky.com/widget',
   'https://threatbutt.com/map'
 ]
-const { code_pen, channel, live, playlists, videos, radio } = experiencesByTypes
+const { code_pen, /*channel,*/ live, playlists, videos, radio } = experiencesByTypes
 
 const accum1 = code_pen.length
 const accum2 = accum1 + bestThreadMaps.length
@@ -174,15 +174,15 @@ const Resolve = ({randomArrayLength}) => {
     randomArrayLength < accum1 ?
       <CodePen url={ code_pen[randomArrayLength] }/>
     : randomArrayLength < accum2 ?
-      <iframe src={bestThreadMaps[randomArrayLength-accum1]} width="100%" height="100%" frameBorder="0"/>
+      <iframe title="1" src={bestThreadMaps[randomArrayLength-accum1]} width="100%" height="100%" frameBorder="0"/>
     : randomArrayLength < accum3 ?
       <YouTube videoId={videos[randomArrayLength-accum2]} opts={{width: '100%',playerVars: {autoplay: 1}} } />
     : randomArrayLength < accum4 ?
       <YouTube videoId="" opts={{width: '100%', height:'100vh', playerVars: {autoplay: 1, list: (playlists[randomArrayLength-accum3]) }} } /> 
     : randomArrayLength < accum5 ?
-      <iframe src={buildLiveChannelsUrl(live[randomArrayLength-accum4])} width="100%" height="100%" frameBorder="0"/>
+      <iframe title="1" src={buildLiveChannelsUrl(live[randomArrayLength-accum4])} width="100%" height="100%" frameBorder="0"/>
     : randomArrayLength < accum6 ?
-      <iframe src={radio[randomArrayLength-accum5]} width="100%" height="100%" frameBorder="0"/>
+      <iframe title="1" src={radio[randomArrayLength-accum5]} width="100%" height="100%" frameBorder="0"/>
     : <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (playlists[17-accum3]) }} } /> 
     // : <iframe src={buildLiveChannelsUrl(channel[randomArrayLength-accum5])} width="100%" height="100%" frameBorder="0"/>
   }
@@ -190,24 +190,25 @@ const Resolve = ({randomArrayLength}) => {
 }
 
 function App() {
-  const _onReady = (event) => {
-    // access to player in all event handlers via event.target
-    // event.target.playVideo();
+  // const _onReady = (event) => {
+  //   // access to player in all event handlers via event.target
+  //   // event.target.playVideo();
     
-  }
+  // }
 
-  const _makeFullscreen = () => {
+  // const _makeFullscreen = () => {
     
-      const playerElement = document.getElementById('widget2')
-      const requestFullScreen =
-        playerElement.requestFullScreen ||
-        playerElement.mozRequestFullScreen ||
-        playerElement.webkitRequestFullScreen
-      console.log({requestFullScreen})
-      if (requestFullScreen) {
-        requestFullScreen.bind(playerElement)()
-      }
-  }
+  //     const playerElement = document.getElementById('widget2')
+  //     const requestFullScreen =
+  //       playerElement.requestFullScreen ||
+  //       playerElement.mozRequestFullScreen ||
+  //       playerElement.webkitRequestFullScreen
+  //     console.log({requestFullScreen})
+  //     if (requestFullScreen) {
+  //       requestFullScreen.bind(playerElement)()
+  //     }
+  // }
+  
   // const [randomArrayLength, setNum] = useState(randomArrNumber(fullArrayLength)-1)
   const [randomArrayLength, setNum] = useState(21)
   const changeChannel = (randomArrayLength) => {
