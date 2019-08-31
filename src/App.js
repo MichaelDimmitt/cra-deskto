@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import YouTube from 'react-youtube';
@@ -77,7 +77,7 @@ const threatMaps = [
 ]
 
 const CodePen = ({url}) => {
-  return <iframe style={{position:'absolute', top:'-62px'}} src={url} width="100%" height="120%" frameBorder="0"/>
+  return <iframe style={{position:'absolute', top:'-62px', width:"100%", height:"120%"}} src={url} width="100%" height="120%" frameBorder="0"/>
 }
 
 const GifExperience = () => (
@@ -156,14 +156,14 @@ const accum2 = accum1 + bestThreadMaps.length
 const accum3 = accum2 + videos.length
 const accum4 = accum3 + playlists.length
 const accum5 = accum4 + live.length
-const accum6 = accum5 + channel.length
+// const accum6 = accum5 + channel.length // live channel not included because not supported by youtube-react
 
-const fullArrayLength = accum6
-const randomArrayLength = randomArrNumber(fullArrayLength)
+const fullArrayLength = accum5
+
 // perform the playllist validation here.
-
-const Resolve = () => 
-  <Fragment>
+const Resolve = ({randomArrayLength}) => {
+  console.log({randomArrayLength})
+  return <Fragment>
   {
     randomArrayLength < accum1 ?
       <CodePen url={ code_pen[randomArrayLength] }/>
@@ -171,10 +171,15 @@ const Resolve = () =>
       <iframe src={bestThreadMaps[randomArrayLength-accum1]} width="100%" height="100%" frameBorder="0"/>
     : randomArrayLength < accum3 ?
       <YouTube videoId={videos[randomArrayLength-accum2]} opts={{width: '100%',playerVars: {autoplay: 1}} } />
-    :
-      <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (playlists[randomArrayLength-accum3]) }} } />
+    : randomArrayLength < accum4 ?
+      <YouTube videoId="" opts={{width: '100%', height:'100vh', playerVars: {autoplay: 1, list: (playlists[randomArrayLength-accum3]) }} } /> 
+    : randomArrayLength < accum5 ?
+    <iframe src={buildLiveChannelsUrl(live[randomArrayLength-accum4])} width="100%" height="100%" frameBorder="0"/>
+    : <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (playlists[17-accum3]) }} } /> 
+    // : <iframe src={buildLiveChannelsUrl(channel[randomArrayLength-accum5])} width="100%" height="100%" frameBorder="0"/>
   }
   </Fragment>
+}
 
 function App() {
   const _onReady = (event) => {
@@ -195,10 +200,19 @@ function App() {
         requestFullScreen.bind(playerElement)()
       }
   }
+  const [randomArrayLength, setNum] = useState(randomArrNumber(fullArrayLength)-1)
+  const changeChannel = (randomArrayLength) => {
+    if(randomArrayLength < fullArrayLength-1){
+      setNum(randomArrayLength+1)
+    } else {
+      setNum(1)
+    }
+    
+  }
   return (
     <Fragment>
-      <button onClick={() => window.location.reload()}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '1000'}}>Refresh? Click Here to change TV Channel</button>
-      <Resolve/>
+      <button onClick={() => changeChannel(randomArrayLength)}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '1000'}}>Refresh? Click Here to change TV Channel</button>
+      <Resolve randomArrayLength={randomArrayLength}/>
       
     </Fragment>
   );
