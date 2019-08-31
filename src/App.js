@@ -12,7 +12,7 @@ const helpers = {
   buildLiveChannelsUrl: (channel) => 'https://www.youtube.com/embed/live_stream?channel=' + channel + '&autoplay=1',
   buildLiveVideo: (plist) => 'https://www.youtube.com/embed/' + plist + '?index=1&rel=0&autoplay=1'
 }
-const { randomArrValue, randomArrNumber, buildUrlPlaylist, buildLiveChannelsUrl, buildLiveVideo } = helpers
+const { /*randomArrValue, randomArrNumber, buildUrlPlaylist,*/ buildLiveChannelsUrl, buildLiveVideo } = helpers
 
 const video_experiences = {
   live: {
@@ -57,6 +57,11 @@ const video_experiences = {
       pitfall: 'https://codepen.io/dsenneff/full/RqYONv'
     }
   },
+  radio: {
+    jetsetradio: "http://www.jetsetradio.live/",
+    x1029radio: "https://www.x1065.com/"
+    /*kexp: "https://kexp.org"*/
+  }
 }
 
 
@@ -149,16 +154,17 @@ const bestThreadMaps = [ // 5,6,7 - 5
   'https://cybermap.kaspersky.com/widget',
   'https://threatbutt.com/map'
 ]
-const { code_pen, channel, live, playlists, videos } = experiencesByTypes
+const { code_pen, channel, live, playlists, videos, radio } = experiencesByTypes
 
 const accum1 = code_pen.length
 const accum2 = accum1 + bestThreadMaps.length
 const accum3 = accum2 + videos.length
 const accum4 = accum3 + playlists.length
 const accum5 = accum4 + live.length
+const accum6 = accum5 + radio.length
 // const accum6 = accum5 + channel.length // live channel not included because not supported by youtube-react
 
-const fullArrayLength = accum5
+const fullArrayLength = accum6
 
 // perform the playllist validation here.
 const Resolve = ({randomArrayLength}) => {
@@ -174,7 +180,9 @@ const Resolve = ({randomArrayLength}) => {
     : randomArrayLength < accum4 ?
       <YouTube videoId="" opts={{width: '100%', height:'100vh', playerVars: {autoplay: 1, list: (playlists[randomArrayLength-accum3]) }} } /> 
     : randomArrayLength < accum5 ?
-    <iframe src={buildLiveChannelsUrl(live[randomArrayLength-accum4])} width="100%" height="100%" frameBorder="0"/>
+      <iframe src={buildLiveChannelsUrl(live[randomArrayLength-accum4])} width="100%" height="100%" frameBorder="0"/>
+    : randomArrayLength < accum6 ?
+      <iframe src={radio[randomArrayLength-accum5]} width="100%" height="100%" frameBorder="0"/>
     : <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (playlists[17-accum3]) }} } /> 
     // : <iframe src={buildLiveChannelsUrl(channel[randomArrayLength-accum5])} width="100%" height="100%" frameBorder="0"/>
   }
@@ -200,7 +208,8 @@ function App() {
         requestFullScreen.bind(playerElement)()
       }
   }
-  const [randomArrayLength, setNum] = useState(randomArrNumber(fullArrayLength)-1)
+  // const [randomArrayLength, setNum] = useState(randomArrNumber(fullArrayLength)-1)
+  const [randomArrayLength, setNum] = useState(21)
   const changeChannel = (randomArrayLength) => {
     if(randomArrayLength < fullArrayLength-1){
       setNum(randomArrayLength+1)
@@ -209,11 +218,11 @@ function App() {
     }
     
   }
+  
   return (
     <Fragment>
       <button onClick={() => changeChannel(randomArrayLength)}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '1000'}}>Refresh? Click Here to change TV Channel</button>
       <Resolve randomArrayLength={randomArrayLength}/>
-      
     </Fragment>
   );
 }
