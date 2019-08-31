@@ -13,45 +13,60 @@ const helpers = {
   buildLiveVideo: (plist) => 'https://www.youtube.com/embed/' + plist + '?index=1&rel=0&autoplay=1'
 }
 const { randomArrValue, randomArrNumber, buildUrlPlaylist, buildLiveChannelsUrl, buildLiveVideo } = helpers
+
 const video_experiences = {
-  live_news_if_online : {
-    spacexLiveChecker: ('UCtI0Hodo5o5dUb67FeUjDeA'),
-    podcastLiveChecker: ('UCzQUP1qoWDoEbmsQxvdjxgQ'),
+  live: {
+    live_news_if_online : {
+      spacexLiveChecker: ('UCtI0Hodo5o5dUb67FeUjDeA'),
+      podcastLiveChecker: ('UCzQUP1qoWDoEbmsQxvdjxgQ'),
+    },
   },
-  live_news_playlists: {
-    youtubeLiveNowTechnology: ('PL57quI9usf_th5iJjjhXcRzlzibHUgYMA'),
-    youtubeLiveNowAnimals: ('PLIFqWCuxNyoj8HAwNYOlqdDL52pNsbvKV')
+  playlists: {
+    live_news_playlists: {
+      youtubeLiveNowTechnology: ('PL57quI9usf_th5iJjjhXcRzlzibHUgYMA'),
+      youtubeLiveNowAnimals: ('PLIFqWCuxNyoj8HAwNYOlqdDL52pNsbvKV')
+    },
+    static_news: {   /* static news updated daily */
+      bbcTopStories: ('PLS3XGZxi7cBVNadbxDqZCUgISvabEpu-g'),
+      espnMustSee: ('PLn3nHXu50t5xa7-HYnJpzN5cxkLYgFP_V')
+    },
+    entertainment_and_visuals: {
+      creedLoadscreens: 'PLZbIo_dYB77tFXtSy6nZjnRyiH_Hwqe_B',
+      assassinsCreedTrailers: 'PLOcTEsKp5qpV7pbtiGeLAjlmD086bqymr',
+      lofiAnimes: 'PLZbIo_dYB77tkPQCgwRMq9a_RRkq0UXZ3',
+      historyOfArchitectureTestWillFailLaterOn: 'PL7_CkZ72ky5P1aPgHTbLBZbcddN_48F44',
+      birds:'PLOh2AUhKQzaNeE-vXiH1SMeJyTdRT84dr'
+    }
   },
-  static_news: {   /* static news updated daily */
-    bbcTopStories: ('PLS3XGZxi7cBVNadbxDqZCUgISvabEpu-g'),
-    espnMustSee: ('PLn3nHXu50t5xa7-HYnJpzN5cxkLYgFP_V')
+  videos: {
+    live_music: {
+      youtubeChilledCowByVideo: ('hHW1oY26kxQ'),
+    },
   },
-  live_music: {
-    youtubeChilledCowByVideo: ('hHW1oY26kxQ'),
-    youtubeChilledCowByChannelId: ('UCSJ4gkVC6NrvII8umztf0Ow')
+  channel: {
+    music: {
+      youtubeChilledCowByChannelId: ('UCSJ4gkVC6NrvII8umztf0Ow')
+    }
   },
   code_pen: {
-    hyperSpace: 'https://codepen.io/yuanchuan/full/dqrdow',
-    enterTheMatrix: 'https://codepen.io/yuanchuan/full/YoqWeR',
-    dnaSequence: 'https://codepen.io/yuanchuan/full/pBrMNQ',
-    trippy: 'https://codepen.io/yuanchuan/full/wZJqNK',
-    pitfall: 'https://codepen.io/dsenneff/full/RqYONv'
+    css: {
+      hyperSpace: 'https://codepen.io/yuanchuan/full/dqrdow',
+      enterTheMatrix: 'https://codepen.io/yuanchuan/full/YoqWeR',
+      dnaSequence: 'https://codepen.io/yuanchuan/full/pBrMNQ',
+      trippy: 'https://codepen.io/yuanchuan/full/wZJqNK',
+      pitfall: 'https://codepen.io/dsenneff/full/RqYONv'
+    }
   },
-  entertainment_and_visuals: {
-    creedLoadscreens: 'PLZbIo_dYB77tFXtSy6nZjnRyiH_Hwqe_B',
-    assassinsCreedTrailers: 'PLOcTEsKp5qpV7pbtiGeLAjlmD086bqymr',
-    lofiAnimes: 'PLZbIo_dYB77tkPQCgwRMq9a_RRkq0UXZ3',
-    historyOfArchitectureTestWillFailLaterOn: 'PL7_CkZ72ky5P1aPgHTbLBZbcddN_48F44',
-    birds:'PLOh2AUhKQzaNeE-vXiH1SMeJyTdRT84dr'
-  }
 }
-const { live_news_if_online, live_news_playlists, static_news, live_music, code_pen, entertainment_and_visuals } = video_experiences
-const { spacexLiveChecker, podcastLiveChecker } = live_news_if_online
-const { youtubeLiveNowTechnology, youtubeLiveNowAnimals } = live_news_playlists
-const { bbcTopStories, espnMustSee } = static_news
-const { youtubeChilledCowByVideo, youtubeChilledCowByChannelId } = live_music
-const { hyperSpace, enterTheMatrix, dnaSequence, trippy, pitfall } = code_pen
-const { creedLoadscreens, assassinsCreedTrailers, lofiAnimes, historyOfArchitectureTestWillFailLaterOn, birds } = entertainment_and_visuals
+
+
+// const { live_news_if_online, live_news_playlists, static_news, live_music, code_pen, entertainment_and_visuals } = video_experiences
+// const { spacexLiveChecker, podcastLiveChecker } = live_news_if_online
+// const { youtubeLiveNowTechnology, youtubeLiveNowAnimals } = live_news_playlists
+// const { bbcTopStories, espnMustSee } = static_news
+// const { youtubeChilledCowByVideo, youtubeChilledCowByChannelId } = live_music
+// const { hyperSpace, enterTheMatrix, dnaSequence, trippy, pitfall } = code_pen
+// const { creedLoadscreens, assassinsCreedTrailers, lofiAnimes, historyOfArchitectureTestWillFailLaterOn, birds } = entertainment_and_visuals
 const threatMaps = [
   'https://threatmap.fortiguard.com',
   'https://threatmap.bitdefender.com',
@@ -74,63 +89,90 @@ const GifExperience = () => (
   </div>
 );
 
-const codePenArray = [ // 0,1,2,3,4 - 0
-  hyperSpace,
-  enterTheMatrix,
-  dnaSequence,
-  trippy,
-  pitfall
-];
+// const codePenArray = [ // 0,1,2,3,4 - 0
+//   hyperSpace,
+//   enterTheMatrix,
+//   dnaSequence,
+//   trippy,
+//   pitfall
+// ];
 
+// const bestThreadMaps = [ // 5,6,7 - 5
+//   'https://threatmap.fortiguard.com',
+//   'https://cybermap.kaspersky.com/widget',
+//   'https://threatbutt.com/map'
+// ]
+
+// const liveChannels = [
+//   spacexLiveChecker,
+//   podcastLiveChecker,
+//   youtubeChilledCowByChannelId
+// ]
+
+// const liveVideos = [
+//   youtubeChilledCowByVideo
+// ]
+// const videoExperienceVideo = [ // 8,9,10,11,12,13,14,15,16 - 8
+//   youtubeChilledCowByVideo,
+// ];
+
+// const videoExperienceList = [
+//   bbcTopStories,
+//   espnMustSee,
+// ]
+// const youtubeList = [ // 17,18,19,20,21 - 17
+//   creedLoadscreens,
+//   assassinsCreedTrailers,
+//   lofiAnimes,
+//   historyOfArchitectureTestWillFailLaterOn,
+// ]
+
+const fun = (info) => {
+  return Object.keys(info).map(
+    x => (typeof info[x] === "object") ? 
+      fun(info[x]) : info[x]
+  )
+}
+
+const keys = Object.keys(video_experiences)
+const experiencesByTypes = keys.reduce( (acc, cur) => {
+  acc[cur] = fun(video_experiences[cur]).flat(Infinity)
+  return acc
+},{});
+console.log({experiencesByTypes})
+// const sum = Object.keys(experiencesByTypes).reduce((acc, key) => 
+//   experiencesByTypes[key].length + acc
+// ,0)
+// console.log({sum})
 const bestThreadMaps = [ // 5,6,7 - 5
   'https://threatmap.fortiguard.com',
   'https://cybermap.kaspersky.com/widget',
   'https://threatbutt.com/map'
 ]
+const { code_pen, channel, live, playlists, videos } = experiencesByTypes
 
-const liveChannels = [
-  spacexLiveChecker,
-  podcastLiveChecker,
-  youtubeChilledCowByChannelId
-]
-
-const liveVideos = [
-  youtubeChilledCowByVideo
-]
-const videoExperienceVideo = [ // 8,9,10,11,12,13,14,15,16 - 8
-  youtubeChilledCowByVideo,
-];
-
-const videoExperienceList = [
-  bbcTopStories,
-  espnMustSee,
-]
-const youtubeList = [ // 17,18,19,20,21 - 17
-  creedLoadscreens,
-  assassinsCreedTrailers,
-  lofiAnimes,
-  historyOfArchitectureTestWillFailLaterOn,
-]
-
-const accum1 = codePenArray.length
+const accum1 = code_pen.length
 const accum2 = accum1 + bestThreadMaps.length
-const accum3 = accum2 + videoExperienceVideo.length
-const accum4 = accum3 + youtubeList.length
+const accum3 = accum2 + videos.length
+const accum4 = accum3 + playlists.length
+const accum5 = accum4 + live.length
+const accum6 = accum5 + channel.length
 
-const fullArrayLength = accum4
+const fullArrayLength = accum6
 const randomArrayLength = randomArrNumber(fullArrayLength)
 // perform the playllist validation here.
+
 const Resolve = () => 
   <Fragment>
   {
     randomArrayLength < accum1 ?
-      <CodePen url={ codePenArray[randomArrayLength] }/>
+      <CodePen url={ code_pen[randomArrayLength] }/>
     : randomArrayLength < accum2 ?
       <iframe src={bestThreadMaps[randomArrayLength-accum1]} width="100%" height="100%" frameBorder="0"/>
     : randomArrayLength < accum3 ?
-      <YouTube videoId={videoExperienceVideo[randomArrayLength-accum2]} opts={{width: '100%',playerVars: {autoplay: 1, list:youtubeList[randomArrayLength-accum3]}} } />
+      <YouTube videoId={videos[randomArrayLength-accum2]} opts={{width: '100%',playerVars: {autoplay: 1}} } />
     :
-      <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (youtubeList[randomArrayLength-accum3]) }} } />
+      <YouTube videoId="" opts={{width: '100%',playerVars: {autoplay: 1, list: (playlists[randomArrayLength-accum3]) }} } />
   }
   </Fragment>
 
