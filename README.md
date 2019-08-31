@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This is a website demonstrating the functionality of:<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac OS desktop tv application: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[desktop_tv](https://github.com/MichaelDimmitt/desktop-tv)
 
-## Available Scripts
+1) ... refreshing the browser triggers change the channel (random order) 
+2) ability to interact with the television via clicks.
+3) button to change the channel (sequential order) 
 
-In the project directory, you can run:
+see the website live at: http://televesion.surge.sh
 
-### `npm start`
+## Desktop Tv (Mvp): Supported on all versions of MacOS
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1 widget, 5 video experiences for a television desktop background.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Introduction/ Sales Pitch:
+Desktop TV is a video streaming application which turns your desktop background into a television.<br/>It provides you with interesting information/music and it stays out of your way so that you can work.
 
-### `npm test`
+## Video Experiences: 
+1) Static News updated Daily: (very stable videos)
+```
+  i) BBC  Top  Stories Playlist  [ youtube ] [ playlist ]
+  i) ESPN Must See     Playlist  [ youtube ] [ playlist ]
+```
+2) live music
+```
+  i) chilled cow channel          [ youtube ] [ live ]
+  i) specific chilled cow videos  [ youtube ] [ live ]
+  i) lofiAnime Playlist           [ youtube ] [ playlist ]
+```
+3) information going live
+```
+  i) Youtube's channel "Live Now" live technology      [ youtube ] [ playlist ] [ live ]
+  i) Youtube's channel "Live Now" live animal channels [ youtube ] [ playlist ] [ live ]
+  i) spacex                                            [ youtube ] [ live ]
+  i) Joe Rogan                                         [ youtube ] [ live ]
+``` 
+4) twich streamers
+```
+  i) currently the 4 most active streamers            [ bloom ] [ twitch ]
+  i) currently the 4 most popular streamers           [ bloom ] [ twitch ]
+  i) let me know if you think of any other groupings. 
+```
+5) Threat Map Sites that look cool:
+```
+  i) kaspersky  [ website ]
+  i) threatbutt [ website ]
+  i) fortigaurd [ website ]
+```
+6) Curated Youtube Playlists:
+```
+  i) playlist to inspire me to build new technologies [ youtube ] [ playlist ]  
+  i) creed game trailers                              [ youtube ] [ playlist ]
+  i) creed (load/city render) screens                 [ youtube ] [ playlist ]
+  i) my history playlist                              [ youtube ] [ playlist ]
+  i) my liked playlist                                [ youtube ] [ playlist ]
+```
+## note: 
+1) Experiences are currently changed by editing the widget.
+2) There is also a random option for experiences. <br/>Feel free to reach to [michael dimmitt](https://github.com/MichaelDimmitt) for more details or open an [issue on github](https://github.com/MichaelDimmitt/desktop-tv-public-facing-documentation/issues).
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Things planned for release in the next phase can be found at [phase2.md](https://github.com/MichaelDimmitt/desktop-tv-public-facing-documentation/blob/master/phase2.md)
