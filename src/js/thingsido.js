@@ -1,3 +1,4 @@
+export const what = () => {
 var things_i_do = [
   "feasting on sushi",
   "reading <a href='https://leanpub.com/javascriptallongesix/readjavascript'>JavaScript Allonge</a>",
@@ -23,7 +24,7 @@ var things_i_do = [
 ];
 
 function display_things_i_do() {
-  what_i_do = things_i_do[Math.floor(Math.random() * things_i_do.length)];
+  const what_i_do = things_i_do[Math.floor(Math.random() * things_i_do.length)];
   document.getElementById("what_i_do").innerHTML = what_i_do;
   // setBackgroundImage();
 }
@@ -43,7 +44,7 @@ document.getElementById("what_i_do").addEventListener("click", function(){
 }, false);
 
 displayImmediatelyAndThenAfterTimeout()
-
+}
 // function setBackgroundImage() {
 //   var image_random_number = Math.floor((Math.random() * 26) + 1);
 //   var imageHolder = document.getElementById("floating-image")

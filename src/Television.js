@@ -1,9 +1,11 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, Component} from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import YouTube from 'react-youtube';
 import {helpers, video_experiences, bestThreadMaps} from './televisionData.js'
-const { /*randomArrValue, randomArrNumber, buildUrlPlaylist, buildLiveVideo*/ buildLiveChannelsUrl } = helpers
+import {what} from './js/thingsido.js'
+import {where} from './js/whereami.js'
+const { /*randomArrValue, , buildUrlPlaylist, buildLiveVideo*/ randomArrNumber, buildLiveChannelsUrl } = helpers
 
 
 const fun = (info) => {
@@ -55,58 +57,66 @@ const Resolve = ({randomArrayLength}) => {
   </span>
 }
 const Profile = () => 
-  <div class="gridiron gridcomponent" style={{zIndex: 1, position: 'absolute'}}>
-    <div class="grid-full"></div>
-    <h1 class="title justify-center grid-full">Michael Dimmitt</h1>
-    <p class="ds robo-text justify-center grid-full">Elixir &nbsp; Bash &nbsp; and Javascript Developer</p>
-    <p class="ds robo-text justify-center grid-full pb3 pt2" >
+  <div className="gridiron gridcomponent" style={{zIndex: 1, position: 'absolute', left: '50%', transform: 'translateX(-50%)'}}>
+    <div className="grid-full"></div>
+    <h1 className="title justify-center grid-full">Michael Dimmitt</h1>
+    <p className="ds robo-text justify-center grid-full">Elixir &nbsp; Bash &nbsp; and Javascript Developer</p>
+    <p className="ds robo-text justify-center grid-full pb3 pt2" >
       FullStack&nbsp;
       {'<= = - == -- = =>'}
       &nbsp;
       FrontEnd
     </p>
-    <div class="grid-full">
-      <div class="flex justify-center" >
-        <a class="grid-half1 justify-self-end nav-link f3 active" href="https://github.com/michaeldimmitt">github</a>
-        <a class="grid-half2 justify-self-start nav-link f3" href="https://twitter.com/m_dimmitt">twitter</a>
+    <div className="grid-full">
+      <div className="flex justify-center" >
+        <a className="grid-half1 justify-self-end nav-link f3 active" href="https://github.com/michaeldimmitt">github</a>
+        <a className="grid-half2 justify-self-start nav-link f3" href="https://twitter.com/m_dimmitt">twitter</a>
       </div>
-      <div class="flex" >
-        <a class="nav-link f3 active" href="https://stock-tick-website.surge.sh/symbols">stocktick</a><a class="nav-link f3" href="https://repository-dashboard.surge.sh">dashboard</a>
-        <a class="nav-link f3" href="https://github.com/MichaelDimmitt/gh_reveal#reveal_brew">reveal</a><a class="nav-link f3" href="https://github.com/MichaelDimmitt/emoji-terminal">emoji_terminal</a>
+      <div className="flex" >
+        <a className="nav-link f3 active" href="https://stock-tick-website.surge.sh/symbols">stocktick</a><a className="nav-link f3" href="https://repository-dashboard.surge.sh">dashboard</a>
+        <a className="nav-link f3" href="https://github.com/MichaelDimmitt/gh_reveal#reveal_brew">reveal</a><a className="nav-link f3" href="https://github.com/MichaelDimmitt/emoji-terminal">emoji_terminal</a>
       </div>
-      <div class="flex" >
-        <a class="nav-link f3 active" href="https://github.com/MichaelDimmitt/know-your-package-manager">know-your-package-manager</a>
-        <a class="nav-link f3" href="https://github.com/MichaelDimmitt/meetup-subscribe#usage">meetup-subscribe</a>
+      <div className="flex" >
+        <a className="nav-link f3 active" href="https://github.com/MichaelDimmitt/know-your-package-manager">know-your-package-manager</a>
+        <a className="nav-link f3" href="https://github.com/MichaelDimmitt/meetup-subscribe#usage">meetup-subscribe</a>
       </div>
     </div>
-    <p id="hobbies" class="grid-full f3">
-      When I'm not <a href="https://github.com/michaeldimmitt">programming</a>, I can usually be found
-      <span class="robo-text bb-2d"  id="what_i_do"></span>.
+    <p id="hobbies" className="grid-full f3">
+      When I'm not <a href="https://github.com/michaeldimmitt">programming</a>, I can usually be found&nbsp;
+      <span className="robo-text bb-2d"  id="what_i_do"></span>.
     </p>
-    <p class="grid-full f3">
+    <p className="grid-full f3">
       <span id="whereami"></span>
     </p>
   </div>    
-function Television() {
-  
-
-  const [randomArrayLength, setNum] = useState(21)
-  const changeChannel = (randomArrayLength) => {
-    if(randomArrayLength < fullArrayLength-1){
-      setNum(randomArrayLength+1)
-    } else {
-      setNum(1)
-    }
+ 
+class Television extends Component {
+  state = {
+    randomArrayLength: randomArrNumber(fullArrayLength)-1// 21
+  }
+  componentDidMount(){
+    what()
+    where()
   }
   
-  return (
-    <Fragment>
-      
-      <Profile/>
-      <button onClick={() => changeChannel(randomArrayLength)}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '2'}}>Refresh? Click Here to change TV Channel</button>
-      <Resolve randomArrayLength={randomArrayLength}/>
-    </Fragment>
-  );
+  render(){
+    const changeChannel = (randomArrayLength) => {
+      if(randomArrayLength < fullArrayLength-1){
+        this.setState({randomArrayLength:randomArrayLength+1})
+      } else {
+        this.setState({randomArrayLength:1})
+      }
+    }
+    
+    const {randomArrayLength} = this.state
+    return (
+      <Fragment>
+        <Profile/>
+        <button onClick={() => changeChannel(randomArrayLength)}style={{position: 'absolute', left:'calc(35%)', top: '30px', zIndex: '2'}}>Refresh? Click Here to change TV Channel</button>
+        <Resolve randomArrayLength={randomArrayLength}/>
+      </Fragment>
+    );
+  }
 }
 
 export default Television;

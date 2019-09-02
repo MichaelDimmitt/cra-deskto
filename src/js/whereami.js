@@ -1,3 +1,4 @@
+export const where = () => {
 function fetchJSONFile(path, callback) {
   var httpRequest = new XMLHttpRequest();
   httpRequest.onreadystatechange = function() {
@@ -37,3 +38,4 @@ fetchJSONFile('https://api.meetup.com/self/events?page=1&scroll=next_upcoming&ac
     <span/>
     `
 });
+}
