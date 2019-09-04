@@ -85,7 +85,7 @@ const Profile = () =>
       When I'm not <a href="https://github.com/michaeldimmitt">programming</a>, I can usually be found&nbsp;
       <span className="robo-text bb-2d"  id="what_i_do"></span>.
     </p>
-    <p className="grid-full f3">
+    <p className="grid-full f3" style={{marginTop: '0px'}}>
       <span id="whereami"></span>
     </p>
   </div>    
