@@ -66,3 +66,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+```bash
+cp build/index.html build/200.html; surge build michaeldimmitt.surge.sh
+# make sure cache is disabled in network tab of dev tools.
+```
