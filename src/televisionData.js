@@ -50,7 +50,7 @@ const video_experiences = {
     }
   },
   radio: {
-    jetsetradio: "https://www.jetsetradio.live/",
+    jetsetradio: "https://www.google.com/search?q=%http://www.jetsetradio.live&btnI=Im+Feeling+Lucky",
     x1029radio: "https://www.x1065.com/"
     /*kexp: "https://kexp.org"*/
   }
